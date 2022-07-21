@@ -1,0 +1,48 @@
+import { useState } from "react";
+
+function Form() {
+  function cadastrarUsuario(e) {
+    e.preventDefault();
+    console.log(name);
+    console.log("Cadastrou o usuário");
+    //* Como estamos chamando variáveis/constantes no console.log, o ideal é usar comas (`) no lugar das aspas ("" ou '')
+    console.log(`Usuário ${name} foi cadastrado com a senha: ${password}`)
+  }
+
+  const [name, setName] = useState("Dayvson");
+  const [password, setPassword] = useState();
+
+  return (
+    <div>
+      <h1>Meu Cadastro:</h1>
+      <form onSubmit={cadastrarUsuario}>
+        <div>
+          <label htmlFor="name">Nome:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Digite o seu nome"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Senha:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Digite a sua senha"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div>
+          <input type="submit" value="Cadastrar" />
+        </div>
+      </form>
+    </div>
+  );
+}
+
+export default Form;
